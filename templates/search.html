@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block page_specific %}
+<div class="container">
+<style>
+
+.result {margin-bottom:15px;display:block; text-decoration: none;padding:5px;
+ }
+.result:hover{ text-decoration: none;}
+.details {color: #666666;}
+
+
+</style>
+
+{% for each_result in results %}
+<a href="/item/{{each_result.doc_id}}" class="row result">
+<h3>{{each_result.fields[0].value}}</h3>
+<p class="details">
+{{ each_result.fields[1].value[:144]}}
+</p>
+<p class="details">{{each_result.fields[2].value}}</p>
+</a>
+
+{% endfor %}
+</div>
+{% endblock %}

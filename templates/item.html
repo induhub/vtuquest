@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+
+
+{% block page_specific %}
+
+<div class="container">
+<style>
+
+</style>
+
+<h3 class="bg-primary"> {{item.qno}}. {{item.question}}  <span class="pull-right label label-default"> {{item.marks}} Marks</span></h3>
+<p>{{markup(item.answer,extras=["wiki-tables"])}}</p>
+</div>
+
+{% endblock %}

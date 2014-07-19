@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+
+
+{% block page_specific %}
+
+<div class="row">
+<form method="post" action="{{url}}" enctype="multipart/form-data"> 
+
+
+  <div class="col-md-8"> 
+		  	<label>Question:<br>
+		 	<textarea name="question"  cols="80">{% if item %}{{item.question}}{% endif %}</textarea>
+			</label><br>
+			<label>Answer:<br>
+		 	<textarea name="answer"  cols="80" rows="23">{% if item %}{{item.answer}}{% endif %}</textarea>
+			</label>
+	</div>
+  <div class="col-md-4"><hr>
+  			<div class="well">
+		  	<label>chapter: <br><input type="text"  name="chapter" value="{% if item %}{{item.chapter}}{% endif %}"></label>
+			<label>year:<br> <input type="text"  name="year" value="{% if item %}{{item.year}}{% endif %}"></label>
+			<label>semester: <br><input type="text"  name="semester" value="{% if item %}{{item.semester}}{% endif %}"></label>
+			<label>subject: <br><input type="text"  name="subject" value="{% if item %}{{item.subject}}{% endif %}"> </label>
+			<label>branch: <br><input type="text"  name="branch" value="{% if item %}{{item.branch}}{% endif %}"></label>
+			<label>qno:<br><input type="text" name="qno" value="{% if item %}{{item.qno}}{% endif %}"></label>
+			<label>part:<br><input type="text" name="part" value="{% if item %}{{item.part}}{% endif %}"></label>
+			<label>marks:<br><input type="text" name="marks" value="{% if item %}{{item.marks}}{% endif %}" ></label>
+			<label> Upload figure: <br><input type="file" name="file"></label>
+			</div>
+		 	<input type="submit" value="Upload the awesomeness" class="btn btn-lg btn-success"> 
+		 	
+  </div>
+</form>
+
+</div>
+
+<div class="row well">
+	<label>Question:<br>
+	<p><b>{{question}}</b></p>
+	</label>
+	<label>Answer:<br>
+	<p>{{answer}}</p>
+	</label>
+	<img src="{{img_url}}" height="300px">
+</div>
+{% endblock %}
+

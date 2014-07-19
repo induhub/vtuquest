@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+
+
+{% block page_specific %}
+
+<h1 align="center">PART - A</h1><hr>
+	{% for each in itemsA %}
+	<h3> {{each.qno}}. {{each.question}}  <span class="pull-right label label-default"> {{each.marks}} Marks</span></h3>
+	<p><pre>{{markup(item.answer,extras=["wiki-tables"])}}</pre></p><hr>
+	{% endfor %} 
+
+
+<h1 align="center">PART - B</h1><hr>
+	{% for each in itemsB %}
+	<h3> {{each.qno}}. {{each.question}} </h3>
+	<p>{{markup(item.answer,extras=["wiki-tables"])}}</p><hr>
+	{% endfor %} 
+
+
+
+{% endblock %}

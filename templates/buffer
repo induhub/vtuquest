@@ -1,0 +1,10 @@
+Representation for binary in. In UNIX systemV, the kernel maintains a file table that has an entry of all opened files  and also there is an inode table that contains a copy of file inodes that are most recently accessed .A process, which gets created when a command is executed will be having its own data space (data structure)wherein it will be having file descriptor table .The file descriptor table will be having an maximum of OPEN_MAX file entries. Whenever the process calls the open function to open a file to read or write, the kernel will resolve the pathname to the file inode number .The steps involved are :
+1. The kernel will search the process descriptor table and look for the unused entry. If an entry is found, that entry will be designated to reference the file. The index of the entry will be returned to the process as the file descriptor of the opened file.
+2. The kernel will scan the file table in its kernel space to find an unused entry that can be assigned to reference the file. If an unused entry is found the following events will occur:
+* The process file descriptor table entry will be set to point to this table entry.
+* The file table entry will be set to point to the inode table entry, where the inode record of the file is stored.
+* The file table entry will contain the current file pointer of the open file. This is an offset from the beginning of the file where the next read or write will occur.
+* The file table entry will contain an open mode that specifies that the file opened is for read only, write only or read and write etc. This should be specified in open function call.
+* The reference count(rc) in the file table entry is set to 1.Reference count is used to keep the track of how many file descriptors from any process are referring the entry.
+* The reference count of the in-memory inode of the file increased by 1. This count specifies how many file table entries are pointing to that inode.
+..* If either (1) or (2) fails ,the open system call returns -1(failure/error)
